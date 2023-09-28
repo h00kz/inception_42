@@ -3,9 +3,11 @@ COMPOSE := docker compose -f srcs/docker-compose.yml
 all: up
 
 up:
-	$(COMPOSE) up -d --build
+	$(COMPOSE) up --build
 
-build:	
+build:
+	mkdir -p /home/$(USER)/data/wordpress
+	mkdir -p /home/$(USER)/data/mariadb
 	$(COMPOSE) build
 
 start:
@@ -36,7 +38,7 @@ fclean: clean
 		sudo rm -rf /home/$(USER)/data/mariadb/*
 
 prune:	fclean
-		sudo docker system prune -f -a
+		docker system prune -f -a
 
 re: fclean all
 	
