@@ -3,6 +3,7 @@ FROM debian:buster
 RUN apt update -y &&\
     apt upgrade -y &&\
     apt install --reinstall ca-certificates -y &&\
+    apt install sendmail -y &&\
     apt install -y php php-fpm php-mysql php-mysqli mariadb-client;
 
 COPY ./tools/wp-cli.phar /usr/local/bin/wp

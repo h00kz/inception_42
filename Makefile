@@ -1,11 +1,12 @@
 COMPOSE := docker compose -f srcs/docker-compose.yml
 
-all: up
+all: build up
 
 up:
-	$(COMPOSE) up --build
+	$(COMPOSE) up
 
 build:
+	cp $(HOME)/Desktop/ENV_INCEP/.env ./srcs/.env
 	mkdir -p /home/$(USER)/data/wordpress
 	mkdir -p /home/$(USER)/data/mariadb
 	$(COMPOSE) build
